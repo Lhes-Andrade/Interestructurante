@@ -73,8 +73,8 @@ public class User {
     }
 
     public void setTelefono(String telefono) {
-        if (telefono.length() > 8) {
-            System.out.println("El número de teléfono debe ser de 8 dígitos máximo.");
+        if (telefono.length() > 15) {
+            System.out.println("El número de teléfono debe ser de 15 dígitos máximo.");
         } else {
             this.telefono = telefono;
         }
@@ -124,33 +124,33 @@ public class User {
             return null;
         }
 
-        if (telefono == null || telefono.length() != 8) {
-            System.out.println("El número de teléfono debe ser de 8 dígitos.");
+        if (telefono == null || telefono.length() != 15) {
+            System.out.println("El número de teléfono debe ser de 15 dígitos.");
             return null;
         }
 
         User newUser = new User(id, nombre, apellido, correoElectronico, telefono, direccion, rol);
-        System.out.println("Usuario registrado exitosamente: " + newUser.getNombre() + " " + newUser.getApellido());
+        System.out.println("Usuario registrado: " + newUser.getNombre() + " " + newUser.getApellido());
         return newUser;
     }
 
     public static boolean iniciarSesion(List<User> users, String correoElectronico, String contrasena) {
         for (User user : users) {
             if (user.getCorreoElectronico().equals(correoElectronico) && user.getContrasena().equals(contrasena)) {
-                System.out.println("Login exitoso. Bienvenido, " + user.getNombre() + "!");
+                System.out.println("Bienvenido, " + user.getNombre() + "!");
                 return true;
             }
         }
-        System.out.println("Credenciales incorrectas. Intenta nuevamente.");
+        System.out.println("Nombre o contraseña incorrectos. Intente nuevamente.");
         return false;
     }
 
     public void cerrarSesion() {
         if (this.autenticado) {
             this.autenticado = false;
-            System.out.println("Sesión cerrada exitosamente. ¡Hasta pronto, " + this.getNombre() + "!");
+            System.out.println("Sesión cerrada. ¡Hasta pronto, " + this.getNombre() + "!");
         } else {
-            System.out.println("El usuario no está autenticado.");
+            System.out.println("Usuario no logueado.");
         }
     }
 
@@ -158,7 +158,7 @@ public class User {
         for (User user : users) {
             if (user.getCorreoElectronico().equals(correoElectronico)) {
                 if (user.getContraseña().equals(contraseñaActual)) {
-                    user.setContraseña(nuevaContraseña);  // Actualiza la contraseña
+                    user.setContraseña(nuevaContraseña);
                     System.out.println("Contraseña restablecida con éxito.");
                     return true;
                 } else {
