@@ -45,12 +45,12 @@ public class Administrador extends User {
 
     public void generarReporte(List<User> usuarios) {
         if (usuarios == null || usuarios.isEmpty()) {
-            System.out.println("No hay usuarios para generar el reporte.");
+            System.out.println("No hay datos para generar el reporte.");
             return;
         }
 
-        System.out.println("------ Reporte de Usuarios ------");
-        System.out.println("ID | Nombre | Correo Electrónico | Rol | Estado");
+        System.out.println("----------------- Reporte de datos ----------------");
+        System.out.println("ID | Nombre | Correo Electrónico | Rol | Estado | Productos publicados|");
         System.out.println("----------------------------------------------------");
 
         for (User usuario : usuarios) {
@@ -58,7 +58,7 @@ public class Administrador extends User {
             System.out.println(usuario.getId() + " | " + usuario.getNombre() + " " + usuario.getApellido() + " | " + usuario.getCorreoElectronico() + " | " + usuario.getRol() + " | " + estado);
         }
 
-        System.out.println("------ Fin del Reporte ------");
+        System.out.println("----------------------------------------------------");
     }
 
     public void activarProductoDeCliente(Cliente cliente, Producto producto) {
